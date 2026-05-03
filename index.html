@@ -34,10 +34,10 @@ body { min-height: 100vh; }
 
 /* ── custom tampon cursor (tilted, thin, bloody tip at top) ── */
 html, body {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='48' viewBox='0 0 32 48'><g transform='rotate(-16 16 24)'><defs><clipPath id='b'><rect x='13' y='8' width='6' height='28' rx='3'/></clipPath></defs><rect x='13' y='8' width='6' height='28' rx='3' fill='%23F5E6C8' stroke='%232A0B1E' stroke-width='0.6'/><rect x='13' y='8' width='6' height='7' fill='%23A01818' clip-path='url(%23b)'/><path d='M16 45 Q 13.5 41 16 38 Q 18.5 35 16 32' fill='none' stroke='%23F5E6C8' stroke-width='1.3' stroke-linecap='round'/></g></svg>") 12 7, auto;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='48' viewBox='0 0 32 48'><g transform='rotate(-16 16 24)'><defs><clipPath id='b'><rect x='13' y='8' width='6' height='28' rx='3'/></clipPath></defs><rect x='13' y='8' width='6' height='28' rx='3' fill='%23F5E6C8' stroke='%232A0B1E' stroke-width='0.6'/><rect x='13' y='8' width='6' height='7' fill='%23A01818' clip-path='url(%23b)'/><path d='M16 45 Q 13.5 41 16 38 Q 18.5 35 16 32' fill='none' stroke='%23FFC93C' stroke-width='1.6' stroke-linecap='round'/></g></svg>") 12 7, auto;
 }
 a, button, input, textarea, [contenteditable], .thumbs {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='48' viewBox='0 0 32 48'><g transform='rotate(-16 16 24)'><defs><clipPath id='b'><rect x='13' y='8' width='6' height='28' rx='3'/></clipPath></defs><rect x='13' y='8' width='6' height='28' rx='3' fill='%23F5E6C8' stroke='%232A0B1E' stroke-width='0.6'/><rect x='13' y='8' width='6' height='7' fill='%23A01818' clip-path='url(%23b)'/><path d='M16 45 Q 13.5 41 16 38 Q 18.5 35 16 32' fill='none' stroke='%23F5E6C8' stroke-width='1.3' stroke-linecap='round'/></g></svg>") 12 7, pointer;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='48' viewBox='0 0 32 48'><g transform='rotate(-16 16 24)'><defs><clipPath id='b'><rect x='13' y='8' width='6' height='28' rx='3'/></clipPath></defs><rect x='13' y='8' width='6' height='28' rx='3' fill='%23F5E6C8' stroke='%232A0B1E' stroke-width='0.6'/><rect x='13' y='8' width='6' height='7' fill='%23A01818' clip-path='url(%23b)'/><path d='M16 45 Q 13.5 41 16 38 Q 18.5 35 16 32' fill='none' stroke='%23FFC93C' stroke-width='1.6' stroke-linecap='round'/></g></svg>") 12 7, pointer;
 }
 a { color: inherit; text-decoration: none; }
 
@@ -46,9 +46,9 @@ a { color: inherit; text-decoration: none; }
 
 /* ── page shell with subtle amber outline borders like the reference ── */
 .page {
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  margin: 8px;
+  border: none;
+  border-radius: 0;
+  margin: 0;
   overflow: hidden;
 }
 
@@ -79,10 +79,10 @@ header {
   display: inline-block;
   background: #2A0B1E;
   color: #FFC93C;
-  padding: 13px 28px;
+  padding: 18px 36px;
   border-radius: 999px;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 20px;
   border: none;
   cursor: pointer;
   transition: background .15s ease;
@@ -820,11 +820,11 @@ body.edit-mode [contenteditable="true"]:focus {
       <div>
         <span class="eyebrow" contenteditable="true">Why fig exists</span>
         <h2 class="h2" contenteditable="true">You get 450 periods over your lifetime.</h2>
-        <p class="body" contenteditable="true"><strong>You deserve better than to &ldquo; just deal with it.&rdquo;</strong></p>
+        <p class="body" contenteditable="true">You deserve better than to &ldquo; just deal with it.&rdquo;</p>
         <ul class="why-list">
-          <li contenteditable="true">Blood</li>
-          <li contenteditable="true">Cramps</li>
-          <li contenteditable="true">Mood swings</li>
+          <li contenteditable="true"><strong>Blood</strong></li>
+          <li contenteditable="true"><strong>Cramps</strong></li>
+          <li contenteditable="true"><strong>Mood swings</strong></li>
         </ul>
         <p class="body" contenteditable="true">&hellip; on repeat. for decades.</p>
         <p class="body" contenteditable="true" style="margin-top:12px;">Fig offers a menstrual care box with essentials and thoughtful extras to make your period a little more bearable.</p>
@@ -905,7 +905,7 @@ body.edit-mode [contenteditable="true"]:focus {
       <input type="email" placeholder="your email address" required>
       <button type="submit" contenteditable="true">join the waitlist</button>
     </form>
-    <p class="signoff" contenteditable="true" style="color: var(--accent); font-style: italic; margin-top: 16px; font-size: 14px;">&hearts; Built by women who have survived 300+ periods and decided we all deserve better care.</p>
+    <p class="signoff" contenteditable="true" style="color: var(--accent); font-style: italic; margin-top: 16px; font-size: 16px; font-family: Arial, sans-serif;">&hearts; Built by women who have survived 300+ periods and decided we all deserve better care.</p>
   </section>
 
   <!-- FOOTER -->
