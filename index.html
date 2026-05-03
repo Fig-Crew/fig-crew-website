@@ -58,6 +58,7 @@ header {
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   padding: 28px 56px;
+  background: #F5E6C8;
   border-bottom: 1px solid var(--border);
 }
 .brand {
@@ -65,11 +66,11 @@ header {
   font-weight: 500;
   font-size: 32px;
   letter-spacing: -0.01em;
-  color: var(--accent);
+  color: #2d0e22;
 }
 .nav-center {
   text-align: center;
-  color: var(--cream-soft);
+  color: #2d0e22;
   font-size: 14px;
   letter-spacing: 0.01em;
 }
@@ -156,7 +157,7 @@ section.no-bottom { border-bottom: none; }
 /* ── HERO ── */
 .hero-section {
   padding: 0 !important;
-  border-bottom: 1px solid var(--border);
+  border-bottom: none;
   overflow: hidden;
   position: relative;
   background: var(--bg);
@@ -331,12 +332,23 @@ section.no-bottom { border-bottom: none; }
 .why-card em { color: var(--cream-soft); font-style: italic; }
 
 section.why-section {
-  background: linear-gradient(to bottom, var(--bg) 0%, #ede3d3 130px);
+  background: #F5E6C8;
+  border-top: none;
 }
 section.why-section .h2,
 section.why-section .why-list,
 section.why-section .body {
   color: #2d0e22;
+}
+section.why-section .eyebrow {
+  color: #45133A;
+}
+section.why-section .eyebrow::before,
+section.why-section .eyebrow::after {
+  background: #45133A;
+}
+section.why-section .why-list li::before {
+  color: #45133A;
 }
 
 /* ── HOW IT WORKS ── */
@@ -893,7 +905,7 @@ body.edit-mode [contenteditable="true"]:focus {
       <input type="email" placeholder="your email address" required>
       <button type="submit" contenteditable="true">join the waitlist</button>
     </form>
-    <p class="signoff" contenteditable="true" style="color: var(--accent); font-style: italic; margin-top: 16px;">&hearts; Built by women who have survived 300+ periods and decided we all deserve better care.</p>
+    <p class="signoff" contenteditable="true" style="color: var(--accent); font-style: italic; margin-top: 16px; font-size: 24px;">&hearts; Built by women who have survived 300+ periods and decided we all deserve better care.</p>
   </section>
 
   <!-- FOOTER -->
