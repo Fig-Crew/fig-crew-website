@@ -876,33 +876,6 @@ body.edit-mode [contenteditable="true"]:focus {
     </div>
   </section>
 
-  <!-- WHERE SHOULD WE FOCUS NEXT -->
-  <section class="focus">
-    <span class="eyebrow plain" contenteditable="true">Tell us</span>
-    <h2 contenteditable="true">where should we focus next?</h2>
-    <p class="sub" contenteditable="true">No commitment. A thumbs up is enough.</p>
-    <div class="focus-grid">
-      <div class="focus-col">
-        <div class="kicker" contenteditable="true">For her first time</div>
-        <h3 contenteditable="true">First Bloom</h3>
-        <p contenteditable="true">For girls entering puberty &mdash; and the women who gift to them. Shame-free, from day one.</p>
-        <button class="thumbs"><span class="emoji">👍</span><span class="count" data-key="first">412</span></button>
-      </div>
-      <div class="focus-col">
-        <div class="kicker" contenteditable="true">Perimenopause <span class="amp">&amp;</span> menopause</div>
-        <h3 contenteditable="true">Full Bloom</h3>
-        <p contenteditable="true">Hot flash support. Vaginal health. Sleep. Adaptogens. A <span class="money">$600B</span> market. Finally a brand that sees you.</p>
-        <button class="thumbs"><span class="emoji">👍</span><span class="count" data-key="full">387</span></button>
-      </div>
-      <div class="focus-col">
-        <div class="kicker" contenteditable="true">Postpartum</div>
-        <h3 contenteditable="true">New Bloom</h3>
-        <p contenteditable="true">The first month after birth. Week by week. Recovery essentials. Because that month deserves serious care.</p>
-        <button class="thumbs"><span class="emoji">👍</span><span class="count" data-key="new">294</span></button>
-      </div>
-    </div>
-  </section>
-
   <!-- SIGNOFF + EMAIL -->
   <section class="launch no-bottom">
     <p class="signoff">Brought to you by women who&rsquo;ve survived 300+ periods and who&rsquo;ve borrowed countless emergency tampons along the way.</p>
@@ -920,19 +893,6 @@ body.edit-mode [contenteditable="true"]:focus {
   </footer>
 
 </div>
-
-<script>
-  // thumbs-up interactivity — simple click increment, no storage
-  document.querySelectorAll('.thumbs').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const c = btn.querySelector('.count');
-      if (!c) return;
-      c.textContent = (parseInt(c.textContent, 10) + 1).toString();
-      btn.style.background = 'rgba(255,201,60,0.14)';
-      setTimeout(() => btn.style.background = '', 250);
-    });
-  });
-</script>
 
 </body>
 </html>
