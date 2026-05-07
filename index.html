@@ -4,44 +4,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>fig — landing page</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,700;1,800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
 :root {
-  --bg:           #2A0B1E;
-  --bg-soft:      #45133A;
-  --bg-deep:      #2A0B1E;
-  --card:         #45133A;
-  --card-soft:    rgba(255,255,255,0.02);
-  --border:       rgba(255,201,60,0.18);
-  --border-hard:  rgba(255,201,60,0.45);
-  --accent:       #FFC93C;
-  --accent-bright:#FFC93C;
-  --accent-fg:    #2A0B1E;
-  --cream:        #F5E6C8;
-  --cream-soft:   #F5E6C8;
-  --muted:        #AE7F95;
-  --muted-2:      #AE7F95;
-  --divider:      rgba(255,201,60,0.28);
+  --bg: #2A0B1E;
+  --bg-soft: #45133A;
+  --bg-deep: #2A0B1E;
+  --card: #45133A;
+  --card-soft: rgba(255,255,255,0.02);
+  --border: rgba(255,201,60,0.18);
+  --border-hard: rgba(255,201,60,0.45);
+  --accent: #FFC93C;
+  --accent-bright: #FFC93C;
+  --accent-fg: #2A0B1E;
+  --cream: #F5E6C8;
+  --cream-soft: #F5E6C8;
+  --muted: #AE7F95;
+  --muted-2: #AE7F95;
+  --divider: rgba(255,201,60,0.28);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { background: var(--bg); color: var(--cream); font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-font-smoothing: antialiased; }
+
+html, body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
 body { min-height: 100vh; }
 
 html, body {
   cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='48' viewBox='0 0 32 48'><g transform='rotate(-16 16 24)'><defs><clipPath id='b'><rect x='13' y='8' width='6' height='28' rx='3'/></clipPath></defs><rect x='13' y='8' width='6' height='28' rx='3' fill='%23F5E6C8' stroke='%232A0B1E' stroke-width='0.6'/><rect x='13' y='8' width='6' height='7' fill='%23A01818' clip-path='url(%23b)'/><path d='M16 45 Q 13.5 41 16 38 Q 18.5 35 16 32' fill='none' stroke='%23FFC93C' stroke-width='1.6' stroke-linecap='round'/></g></svg>") 12 7, auto;
 }
+
 a, button, input, textarea, .thumbs {
   cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='48' viewBox='0 0 32 48'><g transform='rotate(-16 16 24)'><defs><clipPath id='b'><rect x='13' y='8' width='6' height='28' rx='3'/></clipPath></defs><rect x='13' y='8' width='6' height='28' rx='3' fill='%23F5E6C8' stroke='%232A0B1E' stroke-width='0.6'/><rect x='13' y='8' width='6' height='7' fill='%23A01818' clip-path='url(%23b)'/><path d='M16 45 Q 13.5 41 16 38 Q 18.5 35 16 32' fill='none' stroke='%23FFC93C' stroke-width='1.6' stroke-linecap='round'/></g></svg>") 12 7, pointer;
 }
+
+@media (hover: none) {
+  html, body,
+  a, button, input, textarea, .thumbs {
+    cursor: auto;
+  }
+}
+
 a { color: inherit; text-decoration: none; }
 
-.serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 500; }
+.serif {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 500;
+}
+
 .italic { font-style: italic; }
 
-.page { border: none; border-radius: 0; margin: 0; overflow: hidden; }
+.page {
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  overflow: hidden;
+}
 
 header {
   display: grid;
@@ -51,6 +78,7 @@ header {
   background: #F5E6C8;
   border-bottom: 1px solid var(--border);
 }
+
 .brand {
   font-family: 'Playfair Display', serif;
   font-weight: 500;
@@ -58,8 +86,16 @@ header {
   letter-spacing: -0.01em;
   color: #2A0B1E;
 }
-.nav-center { text-align: center; color: #2A0B1E; font-size: 14px; letter-spacing: 0.01em; }
+
+.nav-center {
+  text-align: center;
+  color: #2A0B1E;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+}
+
 .nav-right { text-align: right; }
+
 .btn {
   display: inline-block;
   background: #2A0B1E;
@@ -72,9 +108,14 @@ header {
   cursor: pointer;
   transition: background .15s ease;
 }
+
 .btn:hover { background: #45133A; }
 
-section { padding: 72px 56px; border-bottom: 1px solid var(--border); }
+section {
+  padding: 72px 56px;
+  border-bottom: 1px solid var(--border);
+}
+
 section.soft { background: var(--bg-soft); }
 section.no-bottom { border-bottom: none; }
 
@@ -89,7 +130,9 @@ section.no-bottom { border-bottom: none; }
   align-items: center;
   gap: 14px;
 }
-.eyebrow::before, .eyebrow::after {
+
+.eyebrow::before,
+.eyebrow::after {
   content: "";
   display: inline-block;
   width: 48px;
@@ -97,7 +140,11 @@ section.no-bottom { border-bottom: none; }
   background: var(--accent);
   opacity: 0.55;
 }
-.eyebrow.plain::before, .eyebrow.plain::after { display: none; }
+
+.eyebrow.plain::before,
+.eyebrow.plain::after {
+  display: none;
+}
 
 .h1 {
   font-family: 'Playfair Display', serif;
@@ -107,6 +154,7 @@ section.no-bottom { border-bottom: none; }
   letter-spacing: -0.015em;
   color: var(--cream);
 }
+
 .h2 {
   font-family: 'Playfair Display', serif;
   font-weight: 500;
@@ -115,14 +163,26 @@ section.no-bottom { border-bottom: none; }
   letter-spacing: -0.01em;
   color: var(--cream);
 }
+
 .accent-italic {
   font-family: 'Playfair Display', serif;
   font-style: italic;
   font-weight: 500;
   color: var(--accent);
 }
-.body { font-size: 17px; line-height: 1.7; color: var(--muted); max-width: 540px; }
-.small { font-size: 13px; color: var(--muted-2); letter-spacing: 0.01em; }
+
+.body {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 540px;
+}
+
+.small {
+  font-size: 13px;
+  color: var(--muted-2);
+  letter-spacing: 0.01em;
+}
 
 .hero-section {
   padding: 0 !important;
@@ -132,8 +192,24 @@ section.no-bottom { border-bottom: none; }
   background: var(--bg);
   min-height: 72vh;
 }
-.hero-bg { position: absolute; top: 0; right: 0; bottom: 0; width: 62%; z-index: 0; }
-.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 14%; display: block; }
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 62%;
+  z-index: 0;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 14%;
+  display: block;
+}
+
 .hero-bg::after {
   content: '';
   position: absolute;
@@ -141,6 +217,7 @@ section.no-bottom { border-bottom: none; }
   pointer-events: none;
   background: linear-gradient(90deg, var(--bg) 0%, rgba(42,11,30,0.92) 12%, rgba(42,11,30,0.55) 28%, rgba(42,11,30,0.18) 48%, transparent 65%);
 }
+
 .hero {
   position: relative;
   z-index: 1;
@@ -150,12 +227,29 @@ section.no-bottom { border-bottom: none; }
   align-items: center;
   min-height: 72vh;
 }
-.hero-copy { padding: 80px 40px 80px 56px; align-self: center; }
-.hero-copy .h1 { margin: 28px 0 40px; font-size: clamp(44px, 5vw, 76px); line-height: 1.04; }
+
+.hero-copy {
+  padding: 80px 40px 80px 56px;
+  align-self: center;
+}
+
+.hero-copy .h1 {
+  margin: 28px 0 40px;
+  font-size: clamp(34px, 8vw, 76px);
+  line-height: 1.04;
+}
+
 .hero-copy .body { margin-bottom: 36px; }
+
 .hero-spacer { min-height: 1px; }
 
-.email-form { display: inline-flex; align-items: stretch; background: transparent; margin-bottom: 18px; }
+.email-form {
+  display: inline-flex;
+  align-items: stretch;
+  background: transparent;
+  margin-bottom: 18px;
+}
+
 .email-form input[type="email"] {
   width: 260px;
   padding: 14px 18px;
@@ -165,10 +259,14 @@ section.no-bottom { border-bottom: none; }
   background: #F5E6C8;
   color: #2A0B1E;
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   outline: none;
 }
-.email-form input[type="email"]::placeholder { color: #AE7F95; }
+
+.email-form input[type="email"]::placeholder {
+  color: #AE7F95;
+}
+
 .email-form button {
   padding: 14px 28px;
   background: var(--accent);
@@ -177,23 +275,66 @@ section.no-bottom { border-bottom: none; }
   border-radius: 0 6px 6px 0;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 15px;
   cursor: pointer;
 }
 
-.trust { display: flex; gap: 28px; margin-top: 28px; font-size: 13px; color: var(--muted); }
-.trust span { display: inline-flex; align-items: center; gap: 10px; }
-.trust span::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); display: inline-block; }
+.trust {
+  display: flex;
+  gap: 28px;
+  margin-top: 28px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.trust span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.trust span::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: inline-block;
+}
 
 .hero-img { display: none; }
 
-.why { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; }
+.why {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+}
+
 .why .h2 { margin: 24px 0 32px; }
-.why-list { list-style: none; padding: 0; margin: 28px 0; color: var(--cream); font-size: 17px; line-height: 2; }
-.why-list li::before { content: "→"; color: var(--accent); margin-right: 14px; }
+
+.why-list {
+  list-style: none;
+  padding: 0;
+  margin: 28px 0;
+  color: var(--cream);
+  font-size: 17px;
+  line-height: 2;
+}
+
+.why-list li::before {
+  content: "→";
+  color: var(--accent);
+  margin-right: 14px;
+}
+
 .why p.body { margin-top: 20px; }
 
-.why-cards { display: grid; gap: 20px; align-self: center; }
+.why-cards {
+  display: grid;
+  gap: 20px;
+  align-self: center;
+}
+
 .why-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -201,33 +342,180 @@ section.no-bottom { border-bottom: none; }
   border-radius: 10px;
   padding: 26px 32px;
 }
-.why-card h3 { font-family: 'Playfair Display', serif; font-weight: 500; font-size: 22px; color: var(--cream); margin-bottom: 10px; letter-spacing: -0.003em; }
-.why-card p { font-size: 15px; line-height: 1.7; color: var(--muted); }
-.why-card em { color: var(--cream-soft); font-style: italic; }
 
-section.why-section { background: #F5E6C8; border-top: none; }
-section.why-section .h2, section.why-section .why-list, section.why-section .body { color: #2A0B1E; }
-section.why-section .eyebrow { color: #45133A; }
-section.why-section .eyebrow::before, section.why-section .eyebrow::after { background: #45133A; }
-section.why-section .why-list li::before { color: #45133A; }
+.why-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--cream);
+  margin-bottom: 10px;
+  letter-spacing: -0.003em;
+}
 
-.how .h2 { margin: 24px 0 18px; max-width: 900px; }
-.how .body { margin-bottom: 64px; max-width: 520px; }
-.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.step { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 44px 36px 36px; min-height: 320px; display: flex; flex-direction: column; }
-.step-num { font-family: 'Playfair Display', serif; font-weight: 400; font-style: italic; font-size: 54px; color: var(--accent); opacity: 0.55; letter-spacing: 0.02em; margin-bottom: 36px; }
-.step h3 { font-family: 'Playfair Display', serif; font-weight: 500; font-size: 24px; color: var(--cream); margin-bottom: 12px; }
-.step p { font-size: 15px; line-height: 1.65; color: var(--muted); margin-bottom: 24px; flex: 1; }
-.pill { display: inline-flex; align-items: center; padding: 8px 16px; border: 1px solid var(--border-hard); border-radius: 999px; color: var(--accent); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; align-self: flex-start; }
+.why-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
+}
 
-.product { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
-.product-photo { border: 1px dashed var(--border-hard); border-radius: 14px; min-height: 600px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--accent); opacity: 0.75; font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; }
-.product-photo .hint { color: var(--muted-2); letter-spacing: 0.01em; text-transform: none; font-size: 14px; margin-top: 14px; font-family: 'Playfair Display', serif; font-style: italic; }
-.product .h2 { margin: 24px 0 32px; }
-.product .body { margin-bottom: 16px; max-width: 100%; color: var(--cream-soft); }
-.product ul { padding-left: 20px; color: var(--cream); font-size: 17px; line-height: 1.9; margin: 8px 0 24px; }
-.product .divider { height: 1px; background: var(--border); margin: 28px 0; }
-.product .closing { color: var(--muted); font-size: 15px; line-height: 1.7; max-width: 100%; }
+.why-card em {
+  color: var(--cream-soft);
+  font-style: italic;
+}
+
+section.why-section {
+  background: #F5E6C8;
+  border-top: none;
+}
+
+section.why-section .h2,
+section.why-section .why-list,
+section.why-section .body {
+  color: #2A0B1E;
+}
+
+section.why-section .eyebrow {
+  color: #45133A;
+}
+
+section.why-section .eyebrow::before,
+section.why-section .eyebrow::after {
+  background: #45133A;
+}
+
+section.why-section .why-list li::before {
+  color: #45133A;
+}
+
+.how .h2 {
+  margin: 24px 0 18px;
+  max-width: 900px;
+}
+
+.how .body {
+  margin-bottom: 64px;
+  max-width: 520px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.step {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 44px 36px 36px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+.step-num {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 54px;
+  color: var(--accent);
+  opacity: 0.55;
+  letter-spacing: 0.02em;
+  margin-bottom: 36px;
+}
+
+.step h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+
+.step p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--muted);
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border: 1px solid var(--border-hard);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  align-self: flex-start;
+}
+
+.product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+
+.product-photo {
+  border: 1px dashed var(--border-hard);
+  border-radius: 14px;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  opacity: 0.75;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.product-photo .hint {
+  color: var(--muted-2);
+  letter-spacing: 0.01em;
+  text-transform: none;
+  font-size: 14px;
+  margin-top: 14px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+
+.product .h2 {
+  margin: 24px 0 32px;
+}
+
+.product .body {
+  margin-bottom: 16px;
+  max-width: 100%;
+  color: var(--cream-soft);
+}
+
+.product ul {
+  padding-left: 20px;
+  color: var(--cream);
+  font-size: 17px;
+  line-height: 1.9;
+  margin: 8px 0 24px;
+}
+
+.product .divider {
+  height: 1px;
+  background: var(--border);
+  margin: 28px 0;
+}
+
+.product .closing {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 100%;
+}
 
 .launch {
   background: var(--bg-soft);
@@ -236,6 +524,7 @@ section.why-section .why-list li::before { color: #45133A; }
   position: relative;
   overflow: hidden;
 }
+
 .launch::before {
   content: "";
   position: absolute;
@@ -243,7 +532,14 @@ section.why-section .why-list li::before { color: #45133A; }
   background: radial-gradient(circle at 50% 50%, rgba(255,201,60,0.06) 0%, rgba(255,201,60,0) 55%);
   pointer-events: none;
 }
-.launch form { position: relative; display: flex; justify-content: center; margin-top: 36px; }
+
+.launch form {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+
 .launch .signoff {
   color: var(--cream-soft);
   font-family: 'Playfair Display', serif;
@@ -256,7 +552,8 @@ section.why-section .why-list li::before { color: #45133A; }
   letter-spacing: -0.005em;
 }
 
-.page > footer, footer {
+.page > footer,
+footer {
   display: block;
   width: 100%;
   background: var(--bg-deep);
@@ -266,102 +563,269 @@ section.why-section .why-list li::before { color: #45133A; }
   z-index: 1;
   border-top: 1px solid var(--border);
 }
-footer .footer-mark { display: block; font-family: 'Playfair Display', serif; font-weight: 500; font-size: clamp(22px, 2.4vw, 32px); color: var(--cream); letter-spacing: -0.015em; line-height: 1.05; margin: 0 0 12px; }
-footer .footer-mark .period-accent { color: var(--accent); }
-footer .footer-tag { display: block; font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
-footer .footer-divider { width: 36px; height: 1px; background: var(--accent); opacity: 0.5; margin: 0 auto 14px; }
+
+footer .footer-mark {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: clamp(22px, 2.4vw, 32px);
+  color: var(--cream);
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  margin: 0 0 12px;
+}
+
+footer .footer-mark .period-accent {
+  color: var(--accent);
+}
+
+footer .footer-tag {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+footer .footer-divider {
+  width: 36px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.5;
+  margin: 0 auto 14px;
+}
 
 @media (max-width: 960px) {
-  header { grid-template-columns: auto 1fr; padding: 20px 24px; }
-  .nav-center { display: none; }
-  section { padding: 72px 24px; }
-  .hero, .why, .product { grid-template-columns: 1fr; gap: 0; }
-  .hero { min-height: auto; }
-  .hero-copy { padding: 56px 24px 40px; }
-  .hero-img { min-height: 58vh; }
-  .why, .product { gap: 48px; padding: 72px 24px; }
-  .steps { grid-template-columns: 1fr; }
-  .launch { padding: 88px 24px; }
-  footer { padding: 72px 24px; }
+  header {
+    grid-template-columns: auto 1fr;
+    padding: 20px 24px;
+  }
+
+  .brand {
+    font-size: 38px;
+  }
+
+  .nav-center {
+    display: none;
+  }
+
+  section {
+    padding: 52px 24px;
+  }
+
+  .hero,
+  .why,
+  .product {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-copy {
+    padding: 56px 24px 40px;
+  }
+
+  .hero-copy .h1 {
+    margin: 24px 0 28px;
+  }
+
+  .hero-img {
+    min-height: 58vh;
+  }
+
+  .why,
+  .product {
+    gap: 48px;
+    padding: 52px 24px;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .launch {
+    padding: 64px 24px;
+  }
+
+  footer {
+    padding: 48px 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    align-items: start;
+  }
+
+  .nav-right span {
+    font-size: 12px !important;
+  }
+
+  .hero-section {
+    min-height: auto;
+  }
+
+.hero-bg {
+    width: 100%;
+    opacity: 0.58;
+    filter: contrast(1.12) saturate(1.08) brightness(1.05);
+  }
+
+.hero-bg::after {
+  background: linear-gradient(
+    90deg,
+    rgba(42,11,30,0.92) 0%,
+    rgba(42,11,30,0.72) 38%,
+    rgba(42,11,30,0.38) 100%
+  );
+}
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-copy {
+    padding: 48px 20px 44px;
+  }
+
+  .hero-copy .h1 {
+    font-size: clamp(34px, 10vw, 48px);
+  }
+
+  .body {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .email-form {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .email-form input[type="email"] {
+    width: 100%;
+    border-radius: 6px;
+    border-right: 1px solid var(--border-hard);
+  }
+
+  .email-form button {
+    width: 100%;
+    border-radius: 6px;
+  }
+
+  .trust {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+    font-size: 14px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    line-height: 1.5;
+    gap: 10px;
+  }
+
+  .eyebrow::before,
+  .eyebrow::after {
+    width: 28px;
+  }
+
+  .why-card {
+    padding: 22px 24px;
+  }
+
+  .launch form {
+    margin-top: 28px;
+  }
+
+  footer .footer-tag {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+  }
 }
 </style>
 </head>
+
 <body>
-<script>
-  const correctPassword = "tulum2026";
-  const userPassword = prompt("Enter password to access:");
-  if (userPassword !== correctPassword) {
-    document.body.innerHTML = `
-      <div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;">
-        <div style="text-align:center;"><h2>Access denied</h2><p>Wrong password</p></div>
-      </div>
-    `;
-  }
-</script>
+
 <div class="page">
 
-  <!-- HEADER -->
   <header>
     <div class="brand">fig.</div>
     <div class="nav-center">figcrew.ca</div>
     <div class="nav-right">
-  <span style="display:inline-block; font-size:15px; font-weight:bold; color:#2A0B1E; letter-spacing:0.08em;">launching soon
-    <svg viewBox="0 0 120 10" xmlns="http://www.w3.org/2000/svg" style="display:block; width:100%; height:10px; margin-top:2px;">
-      <path d="M4,7 C25,4 50,3 60,3.5 C75,4 100,5 116,7" stroke="#FFC93C" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
-    </svg>
-  </span>
-</div>
+      <span style="display:inline-block; font-size:15px; font-weight:bold; color:#2A0B1E; letter-spacing:0.08em;">launching soon
+        <svg viewBox="0 0 120 10" xmlns="http://www.w3.org/2000/svg" style="display:block; width:100%; height:10px; margin-top:2px;">
+          <path d="M4,7 C25,4 50,3 60,3.5 C75,4 100,5 116,7" stroke="#FFC93C" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+        </svg>
+      </span>
+    </div>
   </header>
 
-  <!-- HERO -->
   <section class="hero-section">
     <div class="hero-bg" aria-hidden="true">
       <img src="fig_fruit.jpg" alt="">
     </div>
+
     <div class="hero">
       <div class="hero-copy">
         <span class="eyebrow">Join the fig crew | Launching soon</span>
         <h1 class="h1">Your <span class="accent-italic">period</span> is the subscription you never signed up for.</h1>
         <p class="body">We created a care package to make that bloody week more bearable&mdash;delivered right to your door.</p>
+
         <form class="email-form" onsubmit="handleMailerLite(event)">
           <input type="email" placeholder="your email address" required>
           <button type="submit">join the waitlist</button>
         </form>
+
         <div class="small" style="color: var(--muted); margin-top: 4px;">We launch soon! Join the waitlist for early access + discounted pricing</div>
+
         <div class="trust">
           <span>one curated box</span>
           <span>organic products</span>
           <span>proudly canadian 🇨🇦</span>
         </div>
       </div>
+
       <div class="hero-spacer"></div>
     </div>
   </section>
 
-  <!-- WHY FIG -->
   <section class="why-section">
     <div class="why">
       <div>
         <span class="eyebrow">Why fig exists</span>
+
         <h2 class="h2">You get <span style="display:inline-block;">450
-    <svg viewBox="0 0 60 10" xmlns="http://www.w3.org/2000/svg" style="display:block; width:100%; height:10px; margin-top:2px;">
-      <path d="M2,7 C12,4 30,3 38,3.5 C48,4 56,5 58,7" stroke="#FFC93C" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
-    </svg>
-  </span> periods over your lifetime.</h2>
+          <svg viewBox="0 0 60 10" xmlns="http://www.w3.org/2000/svg" style="display:block; width:100%; height:10px; margin-top:2px;">
+            <path d="M2,7 C12,4 30,3 38,3.5 C48,4 56,5 58,7" stroke="#FFC93C" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+          </svg>
+        </span> periods over your lifetime.</h2>
+
         <p class="body">You're not being dramatic. Periods are genuinely disruptive. They affect your sleep, your mood, your productivity, your social life.</p>
         <p class="body">And yet somehow, the message has always been to &ldquo;just deal with it.&rdquo;</p>
         <p class="body"><strong>F*g that.</strong></p>
         <p class="body" style="margin-top:12px;">We offer a menstrual care box with essentials and thoughtful extras to make your period a little more bearable.</p>
       </div>
+
       <div class="why-cards">
         <div class="why-card">
           <h3>No more last-minute pharmacy runs</h3>
           <p>Your Fig box arrives before your period does, stocked with all the essentials&mdash;including tampons and pads&mdash;to get you through the week.</p>
         </div>
+
         <div class="why-card">
           <h3>Curated goodies &amp; wellness products</h3>
           <p>From cravings to cramps to sleep, we&rsquo;ve got you covered. Every box includes carefully chosen extras to support your cycle: chocolates, teas, balms&mdash;you name it!</p>
         </div>
+
         <div class="why-card">
           <h3>Organic & Canadian 🍁</h3>
           <p>We source from Canadian brands whenever possible. And when it comes to period products specifically, we only include organic, non-toxic options.</p>
@@ -370,11 +834,11 @@ footer .footer-divider { width: 36px; height: 1px; background: var(--accent); op
     </div>
   </section>
 
-  <!-- HOW IT WORKS (hidden) -->
   <section class="soft how" style="display:none">
     <span class="eyebrow">How it works</span>
     <h2 class="h2">Three steps. One box. Monthly.</h2>
     <p class="body">We keep it simple because you&rsquo;ve already got enough going on around that time of the month.</p>
+
     <div class="steps">
       <div class="step">
         <div class="step-num">01</div>
@@ -382,12 +846,14 @@ footer .footer-divider { width: 36px; height: 1px; background: var(--accent); op
         <p>Tell us about your flow. We&rsquo;ll calculate exactly how much you need.</p>
         <span class="pill">Flow-based sizing</span>
       </div>
+
       <div class="step">
         <div class="step-num">02</div>
         <h3>Set your sensitivities</h3>
         <p>We filter your wellness products based on what your body can handle.</p>
         <span class="pill">Allergy-aware</span>
       </div>
+
       <div class="step">
         <div class="step-num">03</div>
         <h3>It shows up at your door</h3>
@@ -397,42 +863,47 @@ footer .footer-divider { width: 36px; height: 1px; background: var(--accent); op
     </div>
   </section>
 
-  <!-- PRODUCT (hidden) -->
   <section style="display:none">
     <div class="product">
       <div class="product-photo">
-        <span>⬚  Curated box photo</span>
+        <span>⬚ Curated box photo</span>
         <span class="hint">Drop your product photo here</span>
       </div>
+
       <div>
         <span class="eyebrow">The product</span>
         <h2 class="h2">One bundle.<br>Built around <span class="accent-italic">you.</span></h2>
+
         <p class="body">We&rsquo;re not doing ten versions of the same box.</p>
         <p class="body">There&rsquo;s one fig bundle &mdash; customized to your body.</p>
         <p class="body" style="margin-top:18px; color: var(--cream-soft);">You get:</p>
+
         <ul>
           <li>The right number of period products for your flow</li>
           <li>Organic options only</li>
           <li>Wellness goodies that make your periods more tolerable</li>
         </ul>
+
         <p class="body">That&rsquo;s it.</p>
+
         <div class="divider"></div>
+
         <p class="closing">Pricing not yet announced. Waitlist members get early access and early-bird rates.</p>
       </div>
     </div>
   </section>
 
-  <!-- SIGNOFF + EMAIL -->
   <section class="launch no-bottom" style="text-align: center;">
     <h2 class="h2">Let&rsquo;s make periods less miserable.</h2>
+
     <form class="email-form" onsubmit="handleMailerLite(event)" style="margin-left: auto; margin-right: auto;">
       <input type="email" placeholder="your email address" required>
       <button type="submit">join the waitlist</button>
     </form>
+
     <p class="signoff" style="color: var(--accent); font-style: italic; margin-top: 16px; font-size: 16px; font-family: Arial, sans-serif;">&hearts; Built by women who have survived 300+ periods and decided we all deserve better care.</p>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-mark">fig. <span class="period-accent">period.</span></div>
     <div class="footer-divider"></div>
@@ -444,6 +915,7 @@ footer .footer-divider { width: 36px; height: 1px; background: var(--accent); op
 <script>
 async function handleMailerLite(e) {
   e.preventDefault();
+
   const form = e.target;
   const email = form.querySelector('input[type="email"]').value;
   const btn = form.querySelector('button[type="submit"]');
@@ -461,6 +933,7 @@ async function handleMailerLite(e) {
       'https://assets.mailerlite.com/jsonp/2273334/forms/186314732545771254/subscribe',
       { method: 'POST', body: data, mode: 'no-cors' }
     );
+
     form.innerHTML = '<p style="color: var(--accent); font-family: \'Inter\', sans-serif; font-size: 15px; padding: 14px 0;">Thanks for joining the Fig crew! Keep an eye out for our launch email 👀</p>';
   } catch (err) {
     btn.textContent = 'try again';
