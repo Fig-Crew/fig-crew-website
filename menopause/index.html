@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>fig — for menopause</title>
+<!-- Playfair Display + Inter via Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,700;1,800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── palette ── */
+:root {
+  --bg:           #2A0B1E;       /* primary purple */
+  --bg-soft:      #45133A;       /* secondary purple */
+  --bg-deep:      #2A0B1E;       /* footer (primary purple) */
+  --card:         #45133A;       /* card surface (secondary purple) */
+  --card-soft:    rgba(255,255,255,0.02);
+  --border:       rgba(255,201,60,0.18);
+  --border-hard:  rgba(255,201,60,0.45);
+  --accent:       #FFC93C;       /* yellow */
+  --accent-bright:#FFC93C;       /* hover (same yellow) */
+  --accent-fg:    #2A0B1E;
+  --cream:        #F5E6C8;       /* brand cream */
+  --cream-soft:   #F5E6C8;
+  --muted:        #AE7F95;       /* muted */
+  --muted-2:      #AE7F95;
+  --divider:      rgba(255,201,60,0.28);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); color: var(--cream); font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-font-smoothing: antialiased; }
+body { min-height: 100vh; }
+
+/* ── custom tampon cursor (tilted, thin, bloody tip at top) ── */
+html, body {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='48' viewBox='0 0 32 48'><g transform='rotate(-16 16 24)'><defs><clipPath id='b'><rect x='13' y='8' width='6' height='28' rx='3'/></clipPath></defs><rect x='13' y='8' width='6' height='28' rx='3' fill='%23F5E6C8' stroke='%232A0B1E' stroke-width='0.6'/><rect x='13' y='8' width='6' height='7' fill='%23A01818' clip-path='url(%23b)'/><path d='M16 45 Q 13.5 41 16 38 Q 18.5 35 16 32' fill='none' stroke='%23FFC93C' stroke-width='1.6' stroke-linecap='round'/></g></svg>") 12 7, auto;
+}
+a, button, input, textarea, [contenteditable], .thumbs {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='48' viewBox='0 0 32 48'><g transform='rotate(-16 16 24)'><defs><clipPath id='b'><rect x='13' y='8' width='6' height='28' rx='3'/></clipPath></defs><rect x='13' y='8' width='6' height='28' rx='3' fill='%23F5E6C8' stroke='%232A0B1E' stroke-width='0.6'/><rect x='13' y='8' width='6' height='7' fill='%23A01818' clip-path='url(%23b)'/><path d='M16 45 Q 13.5 41 16 38 Q 18.5 35 16 32' fill='none' stroke='%23FFC93C' stroke-width='1.6' stroke-linecap='round'/></g></svg>") 12 7, pointer;
+}
+a { color: inherit; text-decoration: none; }
+
+.serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 500; }
+.italic { font-style: italic; }
+
+/* ── page shell with subtle amber outline borders like the reference ── */
+.page {
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* ── HEADER ── */
+header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  padding: 28px 56px;
+  background: #F5E6C8;
+  border-bottom: 1px solid var(--border);
+}
+.brand {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: 44px;
+  letter-spacing: -0.01em;
+  color: #2A0B1E;
+}
+.nav-center {
+  text-align: center;
+  color: #2A0B1E;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+}
+.nav-right { text-align: right; }
+.btn {
+  display: inline-block;
+  background: #2A0B1E;
+  color: #FFC93C;
+  padding: 18px 36px;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  transition: background .15s ease;
+}
+.btn:hover { background: #45133A; }
+
+/* ── SECTION ── */
+section {
+  padding: 72px 56px;
+  border-bottom: 1px solid var(--border);
+}
+section.soft { background: var(--bg-soft); }
+section.no-bottom { border-bottom: none; }
+
+.eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.eyebrow::before,
+.eyebrow::after {
+  content: "";
+  display: inline-block;
+  width: 48px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.55;
+}
+.eyebrow.plain::before,
+.eyebrow.plain::after { display: none; }
+
+.h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: clamp(56px, 7vw, 104px);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  color: var(--cream);
+}
+.h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: clamp(40px, 4.6vw, 68px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+}
+.accent-italic {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent);
+}
+.body {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 540px;
+}
+.small {
+  font-size: 13px;
+  color: var(--muted-2);
+  letter-spacing: 0.01em;
+}
+
+/* ── HERO ── */
+.hero-section {
+  padding: 0 !important;
+  border-bottom: none;
+  overflow: hidden;
+  position: relative;
+  background: var(--bg);
+  min-height: 72vh;
+}
+.hero-bg {
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 62%;
+  z-index: 0;
+}
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 14%;
+  display: block;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* smooth plum-to-image blend on the left side of the image */
+  background: linear-gradient(90deg, var(--bg) 0%, rgba(42,11,30,0.92) 12%, rgba(42,11,30,0.55) 28%, rgba(42,11,30,0.18) 48%, transparent 65%);
+}
+.hero {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: center;
+  min-height: 72vh;
+}
+.hero-copy {
+  padding: 80px 40px 80px 56px;
+  align-self: center;
+}
+.hero-copy .h1 {
+  margin: 28px 0 40px;
+  font-size: clamp(44px, 5vw, 76px);
+  line-height: 1.04;
+}
+.hero-copy .body { margin-bottom: 36px; }
+.hero-spacer { min-height: 1px; }
+
+.email-form {
+  display: inline-flex;
+  align-items: stretch;
+  background: transparent;
+  margin-bottom: 18px;
+}
+.email-form input[type="email"] {
+  width: 260px;
+  padding: 14px 18px;
+  border: 1px solid var(--border-hard);
+  border-right: none;
+  border-radius: 6px 0 0 6px;
+  background: #F5E6C8;
+  color: #2A0B1E;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+.email-form input[type="email"]::placeholder { color: #AE7F95; }
+.email-form button {
+  padding: 14px 28px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  border: none;
+  border-radius: 0 6px 6px 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+.email-form-pill {
+  display: inline-flex;
+  align-items: stretch;
+  background: transparent;
+  border: 1px solid rgba(255,201,60,0.35);
+  border-radius: 999px;
+  overflow: hidden;
+  padding: 4px;
+}
+.email-form-pill input[type="email"] {
+  width: 320px;
+  padding: 14px 22px;
+  border: none;
+  background: transparent;
+  color: var(--cream);
+  font-size: 15px;
+  outline: none;
+}
+.email-form-pill input[type="email"]::placeholder { color: rgba(245,230,200,0.45); }
+.email-form-pill button {
+  padding: 14px 30px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  border: none;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.trust {
+  display: flex;
+  gap: 28px;
+  margin-top: 28px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.trust span { display: inline-flex; align-items: center; gap: 10px; }
+.trust span::before {
+  content: "";
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: inline-block;
+}
+
+/* legacy hero-img kept as harmless fallback */
+.hero-img { display: none; }
+
+/* ── WHY FIG ── */
+.why {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+}
+.why .h2 { margin: 24px 0 32px; }
+.why-list {
+  list-style: none;
+  padding: 0;
+  margin: 28px 0;
+  color: var(--cream);
+  font-size: 17px;
+  line-height: 2;
+}
+.why-list li::before {
+  content: "→";
+  color: var(--accent);
+  margin-right: 14px;
+}
+.why p.body { margin-top: 20px; }
+
+.why-cards { display: grid; gap: 20px; align-self: center; }
+.why-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  padding: 26px 32px;
+}
+.why-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--cream);
+  margin-bottom: 10px;
+  letter-spacing: -0.003em;
+}
+.why-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.why-card em { color: var(--cream-soft); font-style: italic; }
+
+section.why-section {
+  background: #F5E6C8;
+  border-top: none;
+}
+section.why-section .h2,
+section.why-section .why-list,
+section.why-section .body {
+  color: #2A0B1E;
+}
+section.why-section .eyebrow {
+  color: #45133A;
+}
+section.why-section .eyebrow::before,
+section.why-section .eyebrow::after {
+  background: #45133A;
+}
+section.why-section .why-list li::before {
+  color: #45133A;
+}
+
+/* ── HOW IT WORKS ── */
+.how .h2 { margin: 24px 0 18px; max-width: 900px; }
+.how .body { margin-bottom: 64px; max-width: 520px; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.step {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 44px 36px 36px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+}
+.step-num {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 54px;
+  color: var(--accent);
+  opacity: 0.55;
+  letter-spacing: 0.02em;
+  margin-bottom: 36px;
+}
+.step h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+.step p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--muted);
+  margin-bottom: 24px;
+  flex: 1;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border: 1px solid var(--border-hard);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  align-self: flex-start;
+}
+
+/* ── PRODUCT ── */
+.product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.product-photo {
+  border: 1px dashed var(--border-hard);
+  border-radius: 14px;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  opacity: 0.75;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.product-photo .hint {
+  color: var(--muted-2);
+  letter-spacing: 0.01em;
+  text-transform: none;
+  font-size: 14px;
+  margin-top: 14px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+.product .h2 { margin: 24px 0 32px; }
+.product .body { margin-bottom: 16px; max-width: 100%; color: var(--cream-soft); }
+.product ul {
+  padding-left: 20px;
+  color: var(--cream);
+  font-size: 17px;
+  line-height: 1.9;
+  margin: 8px 0 24px;
+}
+.product .divider {
+  height: 1px;
+  background: var(--border);
+  margin: 28px 0;
+}
+.product .closing { color: var(--muted); font-size: 15px; line-height: 1.7; max-width: 100%; }
+
+/* ── FOCUS / thumbs up (from screenshot) ── */
+.focus {
+  background: #4F1236;
+  position: relative;
+}
+.focus .eyebrow { margin-bottom: 22px; }
+.focus h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: clamp(44px, 5.5vw, 80px);
+  line-height: 1.05;
+  color: var(--cream);
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
+}
+.focus .sub {
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 68px;
+}
+.focus-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--divider);
+  padding-top: 56px;
+  position: relative;
+}
+.focus-col {
+  padding: 0 48px;
+  border-left: 1px solid var(--divider);
+}
+.focus-col:first-child { border-left: none; padding-left: 0; }
+.focus-col:last-child { padding-right: 0; }
+.focus-col .kicker {
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+.focus-col .kicker .amp { color: var(--accent); font-style: italic; font-family: 'Playfair Display', serif; font-size: 15px; }
+.focus-col h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: 38px;
+  color: var(--cream);
+  margin-bottom: 22px;
+  letter-spacing: -0.005em;
+}
+.focus-col p {
+  font-size: 13px;
+  line-height: 1.95;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.focus-col p .money { color: var(--cream-soft); font-weight: 600; letter-spacing: 0.1em; }
+.thumbs {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 22px;
+  border: 1px solid var(--border-hard);
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  transition: background .15s ease;
+  color: var(--cream);
+  font-size: 16px;
+  font-weight: 500;
+}
+.thumbs:hover { background: rgba(255,201,60,0.08); }
+.thumbs .emoji { font-size: 20px; filter: grayscale(0.1); }
+
+/* ── SIGNOFF + EMAIL ── */
+.launch {
+  background: var(--bg-soft);
+  text-align: center;
+  padding: 72px 56px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.launch::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255,201,60,0.06) 0%, rgba(255,201,60,0) 55%);
+  pointer-events: none;
+}
+.launch form {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+.launch .email-form-pill input[type="email"] {
+  width: 150px;
+  padding: 12px 18px;
+  font-size: 14px;
+}
+.launch .email-form-pill button {
+  padding: 12px 22px;
+  font-size: 13px;
+}
+.launch .signoff {
+  color: var(--cream-soft);
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(22px, 2.2vw, 28px);
+  max-width: 780px;
+  margin: 0 auto;
+  position: relative;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+}
+/* warm-ivory pill email for this section */
+.launch .email-form-pill {
+  background: #F5E6C8;
+  border: 1px solid rgba(255,201,60,0.35);
+  padding: 4px;
+}
+.launch .email-form-pill input[type="email"] {
+  color: #2A0B1E;
+  background: transparent;
+}
+.launch .email-form-pill input[type="email"]::placeholder { color: #AE7F95; }
+
+/* ── FOOTER ── */
+.page > footer,
+footer {
+  display: block;
+  width: 100%;
+  background: var(--bg-deep);
+  padding: 32px 56px 32px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--border);
+}
+footer .footer-mark {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: clamp(22px, 2.4vw, 32px);
+  color: var(--cream);
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  margin: 0 0 12px;
+}
+footer .footer-mark .period-accent {
+  color: var(--accent);
+}
+footer .footer-tag {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 400;
+}
+footer .footer-divider {
+  width: 36px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.5;
+  margin: 0 auto 14px;
+}
+
+/* ── EDIT MODE ── */
+[contenteditable="true"] {
+  outline: none;
+  transition: background .15s ease, box-shadow .15s ease;
+  border-radius: 3px;
+}
+body.edit-mode [contenteditable="true"]:hover {
+  background: rgba(255,201,60,0.06);
+  box-shadow: 0 0 0 1px rgba(255,201,60,0.35);
+}
+body.edit-mode [contenteditable="true"]:focus {
+  background: rgba(255,201,60,0.12);
+  box-shadow: 0 0 0 1px rgba(255,201,60,0.75);
+}
+
+/* edit panel */
+.edit-panel {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 9999;
+  background: #1a0612;
+  color: var(--cream);
+  border: 1px solid var(--border-hard);
+  border-radius: 10px;
+  padding: 14px 16px;
+  width: 260px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+}
+.edit-panel.collapsed .edit-panel-body { display: none; }
+.edit-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.edit-panel-head h4 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+}
+.edit-panel-toggle {
+  background: transparent;
+  border: 1px solid var(--border-hard);
+  color: var(--accent);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.edit-panel label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 10px 0 5px;
+}
+.edit-panel input[type="color"] {
+  width: 100%;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  padding: 2px;
+  cursor: pointer;
+}
+.edit-panel input[type="range"] {
+  width: 100%;
+}
+.edit-panel .row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.edit-panel .row input[type="color"] { flex: 1; }
+.edit-panel .row .val {
+  font-family: 'Inter', monospace;
+  font-size: 11px;
+  color: var(--cream-soft);
+  min-width: 64px;
+  text-align: right;
+}
+.edit-panel .help {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.4;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,201,60,0.15);
+}
+.edit-panel-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.edit-panel-actions button {
+  flex: 1;
+  background: var(--accent);
+  color: var(--accent-fg);
+  border: none;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.edit-panel-actions button.secondary {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid var(--border-hard);
+}
+@media print { .edit-panel { display: none; } }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  header { grid-template-columns: auto 1fr; padding: 20px 24px; }
+  .nav-center { display: none; }
+  section { padding: 72px 24px; }
+  .hero, .why, .product { grid-template-columns: 1fr; gap: 0; }
+  .hero { min-height: auto; }
+  .hero-copy { padding: 56px 24px 40px; }
+  .hero-img { min-height: 58vh; }
+  .why, .product { gap: 48px; padding: 72px 24px; }
+  .steps { grid-template-columns: 1fr; }
+  .focus-grid { grid-template-columns: 1fr; }
+  .focus-col { padding: 28px 0; border-left: none; border-top: 1px solid var(--divider); }
+  .focus-col:first-child { border-top: none; padding-top: 0; }
+  .launch { padding: 88px 24px; }
+  footer { padding: 72px 24px; }
+}
+</style>
+</head>
+<body>
+<script>
+  const correctPassword = "tulum2026"; // change this
+
+  const userPassword = prompt("Enter password to access:");
+
+  if (userPassword !== correctPassword) {
+    document.body.innerHTML = `
+      <div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;">
+        <div style="text-align:center;">
+          <h2>Access denied</h2>
+          <p>Wrong password</p>
+        </div>
+      </div>
+    `;
+  }
+</script>
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <div class="brand" contenteditable="true">fig.</div>
+    <div class="nav-center" contenteditable="true">figcrew.ca/menopause</div>
+    <div class="nav-right"><button class="btn" contenteditable="true">Join the waitlist</button></div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-section">
+    <div class="hero-bg" aria-hidden="true">
+      <img src="../fig_fruit.jpg" alt="">
+    </div>
+    <div class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow" contenteditable="true">Join the fig crew | Launching soon</span>
+        <h1 class="h1" contenteditable="true">Your <span class="accent-italic">period</span> is the subscription you never signed up for.</h1>
+        <p class="body" contenteditable="true">We created a care package to make that bloody week more bearable&mdash;delivered right to your door.</p>
+        <form class="email-form" onsubmit="event.preventDefault(); alert('You&apos;re on the list. We&apos;ll be in touch.')">
+          <input type="email" placeholder="your email address" required>
+          <button type="submit" contenteditable="true">join the waitlist</button>
+        </form>
+        <div class="small" contenteditable="true" style="color: var(--muted); margin-top: 4px;">We launch soon! Join the waitlist for early access + discounted pricing</div>
+        <div class="trust">
+          <span contenteditable="true">one curated box</span>
+          <span contenteditable="true">organic products</span>
+          <span contenteditable="true">proudly canadian 🇨🇦</span>
+        </div>
+      </div>
+      <div class="hero-spacer"></div>
+    </div>
+  </section>
+
+  <!-- WHY FIG -->
+  <section class="why-section">
+    <div class="why">
+      <div>
+        <span class="eyebrow" contenteditable="true">Why fig exists</span>
+        <h2 class="h2" contenteditable="true">You get <span style="background: #FFC93C; padding: 2px 10px; border-radius: 4px; line-height: 1;">450</span> periods over your lifetime.</h2>
+        <p class="body" contenteditable="true">You deserve better than to &ldquo; just deal with it.&rdquo;</p>
+        <ul class="why-list">
+          <li contenteditable="true"><strong>Blood</strong></li>
+          <li contenteditable="true"><strong>Cramps</strong></li>
+          <li contenteditable="true"><strong>Mood swings</strong></li>
+        </ul>
+        <p class="body" contenteditable="true">&hellip; on repeat. for decades.</p>
+        <p class="body" contenteditable="true" style="margin-top:12px;">Fig offers a menstrual care box with essentials and thoughtful extras to make your period a little more bearable.</p>
+      </div>
+      <div class="why-cards">
+        <div class="why-card">
+          <h3 contenteditable="true">No more last-minute pharmacy runs</h3>
+          <p contenteditable="true">Your Fig box arrives before your period does, stocked with all the essentials&mdash;including tampons and pads&mdash;to get you through the week.</p>
+        </div>
+        <div class="why-card">
+          <h3 contenteditable="true">Curated goodies &amp; wellness products</h3>
+          <p contenteditable="true">From cravings to cramps to sleep, we&rsquo;ve got you covered. Every box includes carefully chosen extras to support your cycle, including chocolates, teas, and more.</p>
+        </div>
+        <div class="why-card">
+          <h3 contenteditable="true">Organic and Canadian</h3>
+          <p contenteditable="true">We source from Canadian brands whenever possible. And when it comes to period care, we only include organic, non-toxic options.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS (hidden — remove style to show) -->
+  <section class="soft how" style="display:none">
+    <span class="eyebrow">How it works</span>
+    <h2 class="h2">Three steps. One box. Monthly.</h2>
+    <p class="body">We keep it simple because you&rsquo;ve already got enough going on around that time of the month.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Take the quiz</h3>
+        <p>Tell us about your flow. We&rsquo;ll calculate exactly how much you need.</p>
+        <span class="pill">Flow-based sizing</span>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Set your sensitivities</h3>
+        <p>We filter your wellness products based on what your body can handle.</p>
+        <span class="pill">Allergy-aware</span>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>It shows up at your door</h3>
+        <p>Your box arrives before your period does. Every month.</p>
+        <span class="pill">On time</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT (hidden — remove style to show) -->
+  <section style="display:none">
+    <div class="product">
+      <div class="product-photo">
+        <span>⬚  Curated box photo</span>
+        <span class="hint">Drop your product photo here</span>
+      </div>
+      <div>
+        <span class="eyebrow">The product</span>
+        <h2 class="h2">One bundle.<br>Built around <span class="accent-italic">you.</span></h2>
+        <p class="body">We&rsquo;re not doing ten versions of the same box.</p>
+        <p class="body">There&rsquo;s one fig bundle &mdash; customized to your body.</p>
+        <p class="body" style="margin-top:18px; color: var(--cream-soft);">You get:</p>
+        <ul>
+          <li>The right number of period products for your flow</li>
+          <li>Organic options only</li>
+          <li>Wellness goodies that make your periods more tolerable</li>
+        </ul>
+        <p class="body">That&rsquo;s it.</p>
+        <div class="divider"></div>
+        <p class="closing">Pricing not yet announced. Waitlist members get early access and early-bird rates.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGNOFF + EMAIL -->
+  <section class="launch no-bottom" style="text-align: center;">
+    <h2 class="h2" contenteditable="true">Let&rsquo;s make periods less miserable.</h2>
+    <form class="email-form" onsubmit="event.preventDefault(); alert('You&apos;re on the list. We&apos;ll be in touch.')" style="margin-left: auto; margin-right: auto;">
+      <input type="email" placeholder="your email address" required>
+      <button type="submit" contenteditable="true">join the waitlist</button>
+    </form>
+    <p class="signoff" contenteditable="true" style="color: var(--accent); font-style: italic; margin-top: 16px; font-size: 16px; font-family: Arial, sans-serif;">&hearts; Built by women who have survived 300+ periods and decided we all deserve better care.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-mark">fig. <span class="period-accent">period.</span></div>
+    <div class="footer-divider"></div>
+    <div class="footer-tag">every cycle. every woman.</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
