@@ -36,7 +36,7 @@ body { min-height: 100vh; }
 html, body {
   cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='48' viewBox='0 0 32 48'><g transform='rotate(-16 16 24)'><defs><clipPath id='b'><rect x='13' y='8' width='6' height='28' rx='3'/></clipPath></defs><rect x='13' y='8' width='6' height='28' rx='3' fill='%23F5E6C8' stroke='%232A0B1E' stroke-width='0.6'/><rect x='13' y='8' width='6' height='7' fill='%23A01818' clip-path='url(%23b)'/><path d='M16 45 Q 13.5 41 16 38 Q 18.5 35 16 32' fill='none' stroke='%23FFC93C' stroke-width='1.6' stroke-linecap='round'/></g></svg>") 12 7, auto;
 }
-a, button, input, textarea, [contenteditable], .thumbs {
+a, button, input, textarea, .thumbs {
   cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='48' viewBox='0 0 32 48'><g transform='rotate(-16 16 24)'><defs><clipPath id='b'><rect x='13' y='8' width='6' height='28' rx='3'/></clipPath></defs><rect x='13' y='8' width='6' height='28' rx='3' fill='%23F5E6C8' stroke='%232A0B1E' stroke-width='0.6'/><rect x='13' y='8' width='6' height='7' fill='%23A01818' clip-path='url(%23b)'/><path d='M16 45 Q 13.5 41 16 38 Q 18.5 35 16 32' fill='none' stroke='%23FFC93C' stroke-width='1.6' stroke-linecap='round'/></g></svg>") 12 7, pointer;
 }
 @media (hover: none) {
@@ -628,128 +628,6 @@ footer .footer-divider {
   margin: 0 auto 14px;
 }
 
-/* ── EDIT MODE ── */
-[contenteditable="true"] {
-  outline: none;
-  transition: background .15s ease, box-shadow .15s ease;
-  border-radius: 3px;
-}
-body.edit-mode [contenteditable="true"]:hover {
-  background: rgba(255,201,60,0.06);
-  box-shadow: 0 0 0 1px rgba(255,201,60,0.35);
-}
-body.edit-mode [contenteditable="true"]:focus {
-  background: rgba(255,201,60,0.12);
-  box-shadow: 0 0 0 1px rgba(255,201,60,0.75);
-}
-
-/* edit panel */
-.edit-panel {
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  z-index: 9999;
-  background: #1a0612;
-  color: var(--cream);
-  border: 1px solid var(--border-hard);
-  border-radius: 10px;
-  padding: 14px 16px;
-  width: 260px;
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.45);
-  max-height: calc(100vh - 32px);
-  overflow-y: auto;
-}
-.edit-panel.collapsed .edit-panel-body { display: none; }
-.edit-panel-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-.edit-panel-head h4 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 0.02em;
-  color: var(--accent);
-}
-.edit-panel-toggle {
-  background: transparent;
-  border: 1px solid var(--border-hard);
-  color: var(--accent);
-  border-radius: 4px;
-  padding: 2px 8px;
-  font-size: 11px;
-  cursor: pointer;
-}
-.edit-panel label {
-  display: block;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin: 10px 0 5px;
-}
-.edit-panel input[type="color"] {
-  width: 100%;
-  height: 32px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: transparent;
-  padding: 2px;
-  cursor: pointer;
-}
-.edit-panel input[type="range"] {
-  width: 100%;
-}
-.edit-panel .row {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-.edit-panel .row input[type="color"] { flex: 1; }
-.edit-panel .row .val {
-  font-family: 'Inter', monospace;
-  font-size: 11px;
-  color: var(--cream-soft);
-  min-width: 64px;
-  text-align: right;
-}
-.edit-panel .help {
-  font-size: 11px;
-  color: var(--muted);
-  line-height: 1.4;
-  margin-top: 14px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255,201,60,0.15);
-}
-.edit-panel-actions {
-  display: flex;
-  gap: 8px;
-  margin-top: 12px;
-}
-.edit-panel-actions button {
-  flex: 1;
-  background: var(--accent);
-  color: var(--accent-fg);
-  border: none;
-  border-radius: 6px;
-  padding: 8px 10px;
-  font-size: 11px;
-  font-weight: 600;
-  cursor: pointer;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-.edit-panel-actions button.secondary {
-  background: transparent;
-  color: var(--cream);
-  border: 1px solid var(--border-hard);
-}
-@media print { .edit-panel { display: none; } }
-
 /* ── RESPONSIVE ── */
 @media (max-width: 960px) {
   header {
@@ -924,9 +802,9 @@ body.edit-mode [contenteditable="true"]:focus {
 
   <!-- HEADER -->
   <header>
-    <div class="brand" contenteditable="true">fig.</div>
-    <div class="nav-center" contenteditable="true">figcrew.ca/menopause</div>
-    <div class="nav-right"><button class="btn" contenteditable="true">Join the waitlist</button></div>
+    <div class="brand">fig.</div>
+    <div class="nav-center">figcrew.ca/menopause</div>
+    <div class="nav-right"><button class="btn">Join the waitlist</button></div>
   </header>
 
   <!-- HERO -->
@@ -936,19 +814,19 @@ body.edit-mode [contenteditable="true"]:focus {
     </div>
     <div class="hero">
       <div class="hero-copy">
-        <span class="eyebrow" contenteditable="true">Join the fig crew | Launching soon</span>
-        <h1 class="h1" contenteditable="true">Your <span class="accent-italic">period</span> is the subscription you never signed up for.</h1>
-        <p class="body" contenteditable="true">We created a care package to make that bloody week more bearable&mdash;delivered right to your door.</p>
+        <span class="eyebrow">Join the fig crew | Launching soon</span>
+        <h1 class="h1">Your <span class="accent-italic">period</span> is the subscription you never signed up for.</h1>
+        <p class="body">We created a care package to make that bloody week more bearable&mdash;delivered right to your door.</p>
         <form class="email-form fig-ml-form" onsubmit="submitToMailerLite(event, this)">
           <input type="email" placeholder="your email address" required>
           <button type="submit">join the waitlist</button>
         </form>
         <p class="fig-ml-success" style="display:none; color:var(--accent); font-size:13px; margin-top:8px;">You&rsquo;re on the list. We&rsquo;ll be in touch!</p>
-        <div class="small" contenteditable="true" style="color: var(--muted); margin-top: 4px;">We launch soon! Join the waitlist for early access + discounted pricing</div>
+        <div class="small" style="color: var(--muted); margin-top: 4px;">We launch soon! Join the waitlist for early access + discounted pricing</div>
         <div class="trust">
-          <span contenteditable="true">one curated box</span>
-          <span contenteditable="true">organic products</span>
-          <span contenteditable="true">proudly canadian 🇨🇦</span>
+          <span>one curated box</span>
+          <span>organic products</span>
+          <span>proudly canadian 🇨🇦</span>
         </div>
       </div>
       <div class="hero-spacer"></div>
@@ -1064,13 +942,13 @@ body.edit-mode [contenteditable="true"]:focus {
 
   <!-- SIGNOFF + EMAIL -->
   <section class="launch no-bottom" style="text-align: center;">
-    <h2 class="h2" contenteditable="true">Let&rsquo;s make periods less miserable.</h2>
+    <h2 class="h2">Let&rsquo;s make periods less miserable.</h2>
     <form class="email-form fig-ml-form" onsubmit="submitToMailerLite(event, this)" style="margin-left:auto; margin-right:auto;">
       <input type="email" placeholder="your email address" required>
       <button type="submit">join the waitlist</button>
     </form>
     <p class="fig-ml-success" style="display:none; color:var(--accent); font-size:13px; margin-top:8px;">You&rsquo;re on the list. We&rsquo;ll be in touch!</p>
-    <p class="signoff" contenteditable="true" style="color: var(--accent); font-style: italic; margin-top: 16px; font-size: 16px; font-family: Arial, sans-serif;">&hearts; Built by women who have survived 300+ periods and decided we all deserve better care.</p>
+    <p class="signoff" style="color: var(--accent); font-style: italic; margin-top: 16px; font-size: 16px; font-family: Arial, sans-serif;">&hearts; Built by women who have survived 300+ periods and decided we all deserve better care.</p>
   </section>
 
   <!-- FOOTER -->
