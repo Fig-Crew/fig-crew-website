@@ -30,7 +30,8 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { background: var(--bg); color: var(--cream); font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-font-smoothing: antialiased; }
-body { min-height: 100vh; }
+body { min-height: 100vh; overflow-x: hidden; }
+img { max-width: 100%; }
 
 /* ── custom tampon cursor (tilted, thin, bloody tip at top) ── */
 html, body {
@@ -700,16 +701,17 @@ footer .footer-divider {
 
   .hero-bg {
     width: 100%;
-    opacity: 0.58;
-    filter: contrast(1.12) saturate(1.08) brightness(1.05);
+    opacity: 0.52;
+    filter: contrast(1.08) saturate(1.06) brightness(1.02);
   }
 
+  /* vertical scrim so text stays legible over the full-width image on mobile */
   .hero-bg::after {
     background: linear-gradient(
-      90deg,
-      rgba(42,11,30,0.92) 0%,
-      rgba(42,11,30,0.72) 38%,
-      rgba(42,11,30,0.38) 100%
+      180deg,
+      rgba(42,11,30,0.84) 0%,
+      rgba(42,11,30,0.66) 45%,
+      rgba(42,11,30,0.5) 100%
     );
   }
 
@@ -777,6 +779,54 @@ footer .footer-divider {
     font-size: 11px;
     letter-spacing: 0.2em;
   }
+
+  /* why-section stacks: give the image breathing room above the copy */
+  .why {
+    gap: 32px;
+  }
+
+  section.why-section .why img {
+    border-radius: 14px;
+  }
+
+  /* signoff form: full-width, stacked, comfortable tap targets */
+  .launch form {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  header {
+    padding: 18px 18px;
+  }
+
+  .brand {
+    font-size: 32px;
+  }
+
+  .nav-right span {
+    font-size: 11px !important;
+  }
+
+  section,
+  .why,
+  .product {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .hero-copy {
+    padding: 40px 18px 40px;
+  }
+
+  .hero-copy .h1 {
+    font-size: clamp(30px, 9vw, 42px);
+  }
+
+  .btn {
+    padding: 14px 26px;
+    font-size: 17px;
+  }
 }
 </style>
 
@@ -806,7 +856,7 @@ footer .footer-divider {
       <div class="hero-copy">
         <span class="eyebrow">Join fig crew | Launching soon</span>
         <h1 class="h1"><span class="italic">peri</span><span style="color: var(--accent);">Menopause</span> has entered the group chat.</h1>
-        <p class="body">Perimenopause. Post-menopause. Whatever stage you&rsquo;re in, you shouldn&rsquo;t go through it alone.<br><br>Our monthly care box is here to support you every step of the way.</p>
+        <p class="body">Perimenopause. Post-menopause. Whatever stage you&rsquo;re in, you shouldn&rsquo;t go through it alone. Our <strong>monthly care box</strong> is here to support you every step of the way.</p>
         <form class="email-form fig-ml-form" onsubmit="submitToMailerLite(event, this)">
           <input type="email" placeholder="your email address" required>
           <button type="submit">join the waitlist</button>
@@ -847,14 +897,14 @@ footer .footer-divider {
       <span class="eyebrow">Why fig exists</span>
 
       <h2 class="h2">
-        You'll spend
+        Your body's changing. You deserve
         <span style="display:inline-block;">
-          decades
+          support
           <svg viewBox="0 0 60 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block; width:100%; height:10px; margin-top:2px;">
             <path d="M2,7 C12,4 30,3 38,3.5 C48,4 56,5 58,7" stroke="#FFC93C" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
           </svg>
         </span>
-        dealing with menopause.
+        that keeps up.
       </h2>
 
       <p class="body">
