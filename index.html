@@ -959,7 +959,7 @@ async function handleMailerLite(e) {
       { method: 'POST', body: data, mode: 'no-cors' }
     );
 
-    form.innerHTML = '<p style="color: var(--accent); font-family: \'Inter\', sans-serif; font-size: 15px; padding: 14px 0;">Thanks for joining the Fig crew! Keep an eye out for our launch email 👀</p>';
+    form.innerHTML = '<p style="color: var(--accent); font-family: \'Inter\', sans-serif; font-size: 15px; padding: 14px 0;">Thanks for joining Fig Crew! Keep an eye out for our launch email 👀</p>';
   } catch (err) {
     btn.textContent = 'try again';
     btn.disabled = false;
